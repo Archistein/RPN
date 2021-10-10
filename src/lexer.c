@@ -4,29 +4,32 @@
 
 #include "../inc/token.h"
 
+/*
+TODO: implement isInt and isDouble
+*/
+
 int isNum(char *str) {
     int tempvar;
     return sscanf(str, "%d", &tempvar) == 1;
 }
 
-void tokenize(FILE* stream, TOKEN* buffer, size_t buff_cap) {
+char* tokenize(FILE* stream, TOKEN* buffer, size_t buff_cap) {
 
     unsigned int pos = 0; // Current position in the buffer
 
-    size_t strsize = 255;
-    char *str = (char*) malloc(strsize*sizeof(char));   
-    size_t temp_sz = getline(&str, &strsize, stdin);
+    char *str = (char*) malloc(buff_cap*sizeof(char));   
+    size_t temp_sz = getline(&str, &buff_cap, stdin);
     str[temp_sz-1] = ' '; // Delete newline character from str
     char *toks = strtok(str, " ");
 
     while (toks != NULL) {
 
         if (pos >= buff_cap) {
-            puts("Error: stack overflow");
+            puts("Error: buffer overflow");
             exit(-1);
         }
 
-        if (isNum(toks))
+        if (isNum(toks)) 
             buffer[pos++] = (TOKEN) {TNUMBER, toks};
         else if (!strcmp(toks, "+"))
             buffer[pos++] = (TOKEN) {TPLUS, NULL};
@@ -36,11 +39,16 @@ void tokenize(FILE* stream, TOKEN* buffer, size_t buff_cap) {
             buffer[pos++] = (TOKEN) {TMUL, NULL};
         else if (!strcmp(toks, "/"))
             buffer[pos++] = (TOKEN) {TDIV, NULL};
-        else
+        else if (!strcmp(toks, "dump"))
+            buffer[pos++] = (TOKEN) {TDUMP, NULL};
+        else {
             printf("Error: unexpected token (%s)\n", toks);
+            return NULL;
+        }
         toks = strtok(NULL, " ");
+
     }
 
-    free(str);
+    return pos > 0 ? str : NULL;
 
 }

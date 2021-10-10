@@ -6,6 +6,7 @@ typedef enum {
     TMINUS,
     TDIV,
     TMUL,
+    TDUMP
 } TOKEN_TYPE;
 
 typedef struct {
