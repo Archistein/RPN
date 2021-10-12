@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
             temp_pointer = tokenize(stdin, buffer, CAPACITY);
 
             if (temp_pointer != NULL) {
-                eval(stdin, buffer, CAPACITY);
+                eval(buffer, CAPACITY);
                 free(temp_pointer);
             }
 

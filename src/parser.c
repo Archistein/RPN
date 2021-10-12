@@ -68,7 +68,7 @@ void divide(int *stack, int* pos) {
 }
 
 
-void eval(FILE* stream, TOKEN* buffer, size_t buff_cap) {
+void eval(TOKEN* buffer, size_t buff_cap) {
     
     int stack[CAPACITY] = {0};
     int pos = 0;

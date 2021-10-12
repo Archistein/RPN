@@ -1,4 +1,4 @@
 #pragma once
 #include "token.h"
 
-void eval(FILE *, TOKEN *, size_t);
+void eval(TOKEN *, size_t);
