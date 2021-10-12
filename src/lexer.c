@@ -18,7 +18,7 @@ char* tokenize(FILE* stream, TOKEN* buffer, size_t buff_cap) {
     unsigned int pos = 0; // Current position in the buffer
 
     char *str = (char*) malloc(buff_cap*sizeof(char));   
-    size_t temp_sz = getline(&str, &buff_cap, stdin);
+    size_t temp_sz = getline(&str, &buff_cap, stream);
     str[temp_sz-1] = ' '; // Delete newline character from str
     char *toks = strtok(str, " ");
 
