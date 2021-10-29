@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../inc/lexer.h"
-#include "../inc/parser.h"
-#include "../inc/token.h"
+#include "inc/lexer.h"
+#include "inc/parser.h"
+#include "inc/token.h"
 
 #define CAPACITY 255
 

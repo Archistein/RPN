@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../inc/token.h"
+#include "inc/token.h"
 
 /*
 TODO: implement isInt and isDouble

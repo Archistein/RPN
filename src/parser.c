@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../inc/token.h"
+#include "inc/token.h"
 
 #define CAPACITY 255
 
