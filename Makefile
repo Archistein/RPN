@@ -1,16 +1,16 @@
 all: main parser lexer build run
 
 main: src/main.c
-	gcc -c src/main.c -o obj/main.o
+	gcc -c src/main.c -o buld/obj/main.o
 
 parser: src/parser.c
-	gcc -c src/parser.c -o obj/parser.o
+	gcc -c src/parser.c -o buld/obj/parser.o
 
 lexer: src/lexer.c
-	gcc -c src/lexer.c -o obj/lexer.o
+	gcc -c src/lexer.c -o buld/obj/lexer.o
 
-build: obj/main.o obj/lexer.o obj/parser.o
-	gcc obj/main.o obj/lexer.o obj/parser.o -o build/rpn.out
+build: buld/obj/*.o
+	gcc buld/obj/*.o -o build/rpn
 
 run:
-	./build/rpn.out
+	./build/rpn
